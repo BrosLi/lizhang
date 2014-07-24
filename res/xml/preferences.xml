@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:key="pref_sound"
+        android:title="@string/sound"
+        android:summary="Enable Sound notification"
+        android:defaultValue="true" />
+    <CheckBoxPreference
+       	android:key="pref_shake"
+        android:title="@string/shake"
+        android:summary="Enable Shake notification"
+        android:defaultValue="true" />
+
+</PreferenceScreen>

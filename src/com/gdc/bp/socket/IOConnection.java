@@ -161,6 +161,7 @@ class IOConnection implements IOCallback {
 					"Timeout Error. No heartbeat from server within life time of the socket. closing.",
 					lastException));
 		}
+
 	}
 
 	/** The reconnect task. Null if no reconnection is in progress. */

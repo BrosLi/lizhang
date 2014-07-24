@@ -8,5 +8,10 @@
     <string name="button_login">Login</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="sound">Sound</string>
+    <string name="shake">Shake</string>
+    <string name="popup">Popup</string>
+    <string name="action_restart">Restart Service</string>
+    <string name="action_stop">Stop Service</string>
 
 </resources>

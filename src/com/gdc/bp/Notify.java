@@ -78,12 +78,12 @@ public class Notify extends BaseActivity implements OnClickListener{
 	}
 	/** start service**/
 	private void startBPService(){
-		Intent intent = new Intent(Notify.this, BPService.class);  
+		Intent intent = new Intent(this, BPService.class);  
 		startService(intent);
 	}
 	/** stop service**/
 	private void stopBPService(){
-		Intent intent = new Intent(Notify.this, BPService.class);  
+		Intent intent = new Intent(this, BPService.class);  
 		stopService(intent);
 	}	
 	/** 初始化通知栏 */

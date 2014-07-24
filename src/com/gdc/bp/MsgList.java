@@ -1,5 +1,6 @@
 package com.gdc.bp;
 
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,14 +30,30 @@ public class MsgList extends Activity {
             case R.id.action_settings:
                 openSettings();
                 return true;
+            case R.id.action_stop:
+            	stopBPService();
+                return true;
+            case R.id.action_restart:
+            	startBPService();
+                return true;    
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-    public void openSettings(){
+    private void openSettings(){
     	Intent intent = new Intent();
     	  intent.setClass(this, Setup.class);
     	  startActivity(intent);
     }
+	/** start service**/
+	private void startBPService(){
+		Intent intent = new Intent(this, BPService.class);  
+		startService(intent);
+	}
+	/** stop service**/
+	private void stopBPService(){
+		Intent intent = new Intent(this, BPService.class);  
+		stopService(intent);
+	}	
   
 }  
