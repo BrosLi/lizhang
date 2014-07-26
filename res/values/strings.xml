@@ -13,5 +13,8 @@
     <string name="popup">Popup</string>
     <string name="action_restart">Restart Service</string>
     <string name="action_stop">Stop Service</string>
+    <string name="autostart">Auto Start</string>
+    <string name="db">DB Demo</string>
+    <string name="action_refresh">刷新列表测试</string>
 
 </resources>

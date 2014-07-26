@@ -30,6 +30,12 @@ public class MsgList extends Activity {
             case R.id.action_settings:
                 openSettings();
                 return true;
+            case R.id.action_db:
+            	showDB();
+                return true;   
+            case R.id.action_refresh:
+            	refreshList();
+                return true;                 
             case R.id.action_stop:
             	stopBPService();
                 return true;
@@ -47,13 +53,24 @@ public class MsgList extends Activity {
     }
 	/** start service**/
 	private void startBPService(){
-		Intent intent = new Intent(this, BPService.class);  
+		Intent intent = new Intent(this, BPAS.class);  
 		startService(intent);
 	}
 	/** stop service**/
 	private void stopBPService(){
-		Intent intent = new Intent(this, BPService.class);  
+		Intent intent = new Intent(this, BPAS.class);  
 		stopService(intent);
+	}	
+	
+	/** show db demo **/
+	private void showDB(){
+		//Intent intent = new Intent(this, db.class);  
+		//startActivity(intent);
+	}
+	/** refresh list demo **/
+	private void refreshList(){
+		Intent intent = new Intent(this, refresh.class);  
+		startActivity(intent);
 	}	
   
 }  

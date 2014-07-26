@@ -10,5 +10,10 @@
         android:title="@string/shake"
         android:summary="Enable Shake notification"
         android:defaultValue="true" />
+    <CheckBoxPreference
+       	android:key="pref_autostart"
+        android:title="@string/autostart"
+        android:summary="Auto start with boot"
+        android:defaultValue="true" />
 
 </PreferenceScreen>

@@ -12,6 +12,16 @@
         android:orderInCategory="100"
         android:showAsAction="ifRoom"
         android:title="@string/action_stop"/>
+        <item
+        android:id="@+id/action_refresh"
+        android:orderInCategory="100"
+        android:showAsAction="ifRoom"
+        android:title="@string/action_refresh"/>        
+        <item
+        android:id="@+id/action_db"
+        android:orderInCategory="100"
+        android:showAsAction="ifRoom"
+        android:title="@string/db"/>
                 <item
         android:id="@+id/action_restart"
         android:orderInCategory="100"

@@ -1,5 +1,7 @@
 package com.gdc.bp;
 
+import java.net.MalformedURLException;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -48,8 +50,14 @@ public class BPService extends Service {
          */
         Toast.makeText(this, "Play Service onStart", Toast.LENGTH_LONG).show();
         Log.v(TAG, "ServiceonStart");
+        try {
+			socketOn();
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         if(!running){
-        	socketT.start(); // 启动线程        
+        	//socketT.start(); // 启动线程        
         }
         //mediaPlayer.start();
     }
@@ -60,14 +68,9 @@ public class BPService extends Service {
         super.onDestroy();
         Toast.makeText(this, "Play Service Stopped", Toast.LENGTH_LONG).show();
         Log.v(TAG, "ServiconDestroy");
-        running=false;
-        try {
-			socketT.join(1);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        //mediaPlayer.stop();
+        if(!running){
+        	//socketT.start(); // 启动线程        
+        }
     }
     public void showNotify(String title,String content){
     	NotificationCompat.Builder mBuilder =
@@ -94,82 +97,68 @@ public class BPService extends Service {
     	
     }
 
-    Thread socketT = new Thread(){
-    	@Override
-    	public void run(){
-    		try{
+    
+    public void socketOn() throws MalformedURLException{
+	        running=true;
+			//final SocketIO socket = new SocketIO("http://ppdppd-125721.euw1.nitrousbox.com:3001/");
+	        final SocketIO socket = new SocketIO("http://10.0.2.2:3001/");
+	    	socket.connect(new IOCallback() {
+	    	    @Override
+	    	    public void onMessage(JSONObject json, IOAcknowledge ack) {
+	    	        try {
+	    	            System.out.println("Server said:" + json.toString(2));
+	    	        } catch (JSONException e) {
+	    	            e.printStackTrace();
+	    	        }
+	    	    }
 
-    	        running=true;
-    			//final SocketIO socket = new SocketIO("http://ppdppd-125721.euw1.nitrousbox.com:3001/");
-    	        final SocketIO socket = new SocketIO("http://10.0.2.2:3001/");
-    	    	socket.connect(new IOCallback() {
-    	    	    @Override
-    	    	    public void onMessage(JSONObject json, IOAcknowledge ack) {
-    	    	        try {
-    	    	            System.out.println("Server said:" + json.toString(2));
-    	    	        } catch (JSONException e) {
-    	    	            e.printStackTrace();
-    	    	        }
-    	    	    }
+	    	    @Override
+	    	    public void onMessage(String data, IOAcknowledge ack) {
+	    	        System.out.println("Server said: " + data);
+	    	    }
 
-    	    	    @Override
-    	    	    public void onMessage(String data, IOAcknowledge ack) {
-    	    	        System.out.println("Server said: " + data);
-    	    	    }
+	    	    @Override
+	    	    public void onError(SocketIOException socketIOException) {
+	    	        System.out.println("an Error occured");
+	    	        socketIOException.printStackTrace();
+	    	        //socket.reconnect();
+	    	        //Reconnect by restart socketT thread
+	    	       socket.reconnect();
+	    	        System.out.println("reconnect start OnError");
+	    	    }
 
-    	    	    @Override
-    	    	    public void onError(SocketIOException socketIOException) {
-    	    	        System.out.println("an Error occured");
-    	    	        socketIOException.printStackTrace();
-    	    	        //socket.reconnect();
-    	    	        //Reconnect by restart socketT thread
-    	    	        running=false;
-    	    	        System.out.println(running);
-    	    	        if(!running){
-    	    	        	socketT.start(); // 启动线程        
-    	    	        }
-    	    	        System.out.println("bp..socket.reconnect start..");
-    	    	    }
+	    	    @Override
+	    	    public void onDisconnect() {
+	    	        System.out.println("Connection terminated.");
+	    	        //socket.reconnect();
+	    	        //Reconnect by restart socketT thread
+	    	        socket.reconnect();
+	    	        System.out.println("reconnect start onDisconnect");
+	    	    }
 
-    	    	    @Override
-    	    	    public void onDisconnect() {
-    	    	        System.out.println("Connection terminated.");
-    	    	        //socket.reconnect();
-    	    	        //Reconnect by restart socketT thread
-    	    	        if(!running){
-    	    	        	socketT.start(); // 启动线程        
-    	    	        }
-    	    	        System.out.println("bp..socket.reconnect start..");
-    	    	    }
+	    	    @Override
+	    	    public void onConnect() {    	    	    
+	    	        System.out.println("Connection established");
+	    	        socket.send("Im an onConnect");
+	    	    }
 
-    	    	    @Override
-    	    	    public void onConnect() {    	    	    
-    	    	        System.out.println("Connection established");
+	    	    @Override
+	    	    public void on(String event, IOAcknowledge ack, Object... args) {
+	    	        System.out.println("Server triggered event '" + event + "'");
+	    	        if(event.equals("Info")){
+    	    	        JSONObject obj = (JSONObject)args[0];                        	
+                        try {
+    						showNotify("BP Notify",obj.getString("title"));
+    					} catch (JSONException e) {
+    						// TODO Auto-generated catch block
+    						e.printStackTrace();
+    					}
+	    	        }
+	    	    }
+	    	});
 
-    	    	    }
-
-    	    	    @Override
-    	    	    public void on(String event, IOAcknowledge ack, Object... args) {
-    	    	        System.out.println("Server triggered event '" + event + "'");
-    	    	        if(event.equals("Info")){
-        	    	        JSONObject obj = (JSONObject)args[0];                        	
-                            try {
-        						showNotify("BP Notify",obj.getString("title"));
-        					} catch (JSONException e) {
-        						// TODO Auto-generated catch block
-        						e.printStackTrace();
-        					}
-    	    	        }
-    	    	    }
-    	    	});
-
-    	    	// This line is cached until the connection is established.
-    	    	socket.send("Hello Server!");	
-    		}catch(Exception e){
-    			
-    		}
-    	
-    	}
-    };
+	    	// This line is cached until the connection is established.
+	    	//socket.send("Hello Server!");	
+    }
 }
 

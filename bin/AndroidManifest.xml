@@ -29,12 +29,14 @@
         </activity>
         <activity android:name="SoundActivity"></activity>
         <activity android:name="Setup"></activity>
+        <activity android:name="db"></activity>
+        <activity android:name="refresh"></activity>
         <activity android:name="Notify">
             
         </activity>
 
         <service
-            android:name=".BPService"
+            android:name=".BPAS"
             android:exported="false"/>
     </application>
 
