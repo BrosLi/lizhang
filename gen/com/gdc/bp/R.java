@@ -25,11 +25,11 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_db=0x7f09001e;
-        public static final int action_refresh=0x7f09001d;
-        public static final int action_restart=0x7f09001f;
-        public static final int action_settings=0x7f09001b;
-        public static final int action_stop=0x7f09001c;
+        public static final int action_db=0x7f09001d;
+        public static final int action_refresh=0x7f09001c;
+        public static final int action_restart=0x7f09001e;
+        public static final int action_settings=0x7f09001a;
+        public static final int action_stop=0x7f09001b;
         public static final int btn_bigstyle_show=0x7f090010;
         public static final int btn_clear=0x7f090014;
         public static final int btn_clear_all=0x7f090015;
@@ -52,7 +52,6 @@ public final class R {
         public static final int listview=0x7f090018;
         public static final int menu_fragment=0x7f090003;
         public static final int menu_list=0x7f09000c;
-        public static final int sound_fragment=0x7f09001a;
         public static final int toggleButton1=0x7f090019;
         public static final int tv=0x7f090001;
         public static final int user_id=0x7f090008;
@@ -71,8 +70,6 @@ public final class R {
         public static final int notify=0x7f030009;
         public static final int refresh=0x7f03000a;
         public static final int setup=0x7f03000b;
-        public static final int sound_activity=0x7f03000c;
-        public static final int sound_fragment=0x7f03000d;
     }
     public static final class menu {
         public static final int main=0x7f080000;

@@ -38,6 +38,7 @@
         <service
             android:name=".BPAS"
             android:exported="false"/>
+     
     </application>
 
 </manifest>

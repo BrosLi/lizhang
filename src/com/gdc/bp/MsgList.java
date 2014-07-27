@@ -14,8 +14,10 @@ public class MsgList extends Activity {
     @Override  
     public void onCreate(Bundle savedInstanceState) {  
         super.onCreate(savedInstanceState);  
-        setContentView(R.layout.list);  
-    }  
+        
+        setContentView(R.layout.list);
+       // DbAdapter db = new DbAdapter(this);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu items for use in the action bar
@@ -29,10 +31,7 @@ public class MsgList extends Activity {
         switch (item.getItemId()) {
             case R.id.action_settings:
                 openSettings();
-                return true;
-            case R.id.action_db:
-            	showDB();
-                return true;   
+                return true; 
             case R.id.action_refresh:
             	refreshList();
                 return true;                 
@@ -61,15 +60,10 @@ public class MsgList extends Activity {
 		Intent intent = new Intent(this, BPAS.class);  
 		stopService(intent);
 	}	
-	
-	/** show db demo **/
-	private void showDB(){
-		//Intent intent = new Intent(this, db.class);  
-		//startActivity(intent);
-	}
+
 	/** refresh list demo **/
 	private void refreshList(){
-		Intent intent = new Intent(this, refresh.class);  
+		Intent intent = new Intent(this, MsgList.class);  
 		startActivity(intent);
 	}	
   

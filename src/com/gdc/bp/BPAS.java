@@ -44,6 +44,7 @@ public class BPAS extends Service {
     @Override
     public void onStart(Intent intent, int startId) {
     	Toast.makeText(this, "Play Service onStart", Toast.LENGTH_LONG).show();
+    	
     	socketOn();
     }
     @Override
@@ -60,10 +61,10 @@ public class BPAS extends Service {
     	        .setSmallIcon(R.drawable.ic_launcher)
     	        .setContentTitle(title)
     	        .setContentText(content);
-    	Intent resultIntent = new Intent(this, Notify.class);
+    	Intent resultIntent = new Intent(this, MsgList.class);
     	 
     	TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-    	stackBuilder.addParentStack(Notify.class);
+    	stackBuilder.addParentStack(MsgList.class);
     	stackBuilder.addNextIntent(resultIntent);
     	PendingIntent resultPendingIntent =
     	        stackBuilder.getPendingIntent(
@@ -80,7 +81,7 @@ public class BPAS extends Service {
     }
     
     public void socketOn(){
-    	SocketIOClient.connect(AsyncHttpClient.getDefaultInstance(), "http://10.0.2.2:8000", mConnectCallback);
+    	SocketIOClient.connect(AsyncHttpClient.getDefaultInstance(), "http://ppdppd-125721.euw1.nitrousbox.com:8000", mConnectCallback);
     }
     ConnectCallback mConnectCallback = new ConnectCallback() {
 
@@ -118,37 +119,29 @@ public class BPAS extends Service {
 					//mMessages.addAll(messages);
 					//scrollMyListViewToBottom();
 					showNotify("BP",jsonArray.toString());
-					updateDB("Jerry",jsonArray.toString());
-					DoDatabase();
+					//updateDB("Jerry",jsonArray.toString());
+					//DoDatabase();
+					InsertDB("bp",jsonArray.toString(),"jerry","2014/07/27");
+					System.out.println("InsertDB done");
 					
 				}
 			});
 			mClient = client;
 		}
 	};
-	private void updateDB(String sender,String message){
-		//实例化对象  
-        DBHelper DBhelp=new DBHelper(this, "BP_db", null, 1);  
-        //获取写入数据对象  
-        SQLiteDatabase db=DBhelp.getWritableDatabase();  
-            //实例化放置数据对象  
-    ContentValues values = new ContentValues();  
-    //数据准备  
-    values.put(DBHelper.MESSAGE, message);  
-    //插入数据  
-    db.insert(DBHelper.TB_NAME, DBHelper.ID, values);
+	
+	public void InsertDB(String title,String content, String sender, String time){
+        DbAdapter db = new DbAdapter(this);
+      //---add 2 titles---
+
+      db.open();
+      long id;
+      id = db.insertTitle(
+      title,
+      content,
+      sender,
+      time);
+      db.close();
 	}
 
-	 public void DoDatabase(){
-	        DbDao dbDao=new DbDao();
-	                //增
-	        dbDao.exeDO("insert into xiangqiao_table values(null,'xiangqiao','xiangqiao 的内容','2011-11-10 12:10:11')");
-	                //改
-	        dbDao.exeDO("update xiangqiao_table set name='123' where id=1");
-	                //查
-	        String result=dbDao.exeQuery("select * from xiangqiao_table order by id desc");
-	        System.out.println(result);
-	                //删
-	        //dbDao.exeDO("delete from xiangqiao_table where id=2");
-	}
 }

@@ -5,11 +5,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class DisplayFragment extends Fragment {  
   
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {  
+    	if(getArguments()!=null)
+    	{
+    	String myInt = getArguments().getString("content");
+    	}
+
         View view = inflater.inflate(R.layout.display_fragment, container, false);  
-        return view;  
+        return view; 
+        
     }  
 }  
