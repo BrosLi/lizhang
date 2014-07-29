@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MsgList"
+            android:name="LoginActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,20 +22,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="LoginActivity">       
+        <activity android:name="MsgList">       
         </activity>
         <activity android:name="Setup">
             <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value="com.gdc.bp.MsgList" />    
         </activity>
-        <activity android:name="DisplayActivity"></activity>
+        <activity android:name="DisplayActivity">
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.gdc.bp.MsgList" />
+        </activity>
         <activity android:name="LogoActivity"></activity>
 
         <service
             android:name=".BPAS"
-            android:exported="false"/>
-     
+            android:exported="false"/>     
     </application>
 
 </manifest>
