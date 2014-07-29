@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">BP</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Blue Push</string>
     <string name="action_settings">Settings</string>
-    <string name="string_testuser">User1</string>
     <string name="button_login">Login</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
@@ -14,7 +12,6 @@
     <string name="action_restart">Restart Service</string>
     <string name="action_stop">Stop Service</string>
     <string name="autostart">Auto Start</string>
-    <string name="db">DB Demo</string>
-    <string name="action_refresh">刷新列表测试</string>
-
+    <string name="action_logoff">Log Off</string>
+    <string name="action_delList">Clear List</string>
 </resources>

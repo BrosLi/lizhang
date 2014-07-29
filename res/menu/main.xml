@@ -8,21 +8,21 @@
         android:showAsAction="ifRoom"
         android:title="@string/action_settings"/>
         <item
+        android:id="@+id/action_delList"
+        android:orderInCategory="100"
+        android:showAsAction="ifRoom"
+        android:title="@string/action_delList"/>
+        <item
+        android:id="@+id/action_logoff"
+        android:orderInCategory="100"
+        android:showAsAction="ifRoom"
+        android:title="@string/action_logoff"/>
+        <item
         android:id="@+id/action_stop"
         android:orderInCategory="100"
         android:showAsAction="ifRoom"
         android:title="@string/action_stop"/>
-        <item
-        android:id="@+id/action_refresh"
-        android:orderInCategory="100"
-        android:showAsAction="ifRoom"
-        android:title="@string/action_refresh"/>        
-        <item
-        android:id="@+id/action_db"
-        android:orderInCategory="100"
-        android:showAsAction="ifRoom"
-        android:title="@string/db"/>
-                <item
+		 <item
         android:id="@+id/action_restart"
         android:orderInCategory="100"
         android:showAsAction="never"

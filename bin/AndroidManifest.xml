@@ -22,18 +22,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="DisplayActivity">
+        <activity android:name="LoginActivity">       
+        </activity>
+        <activity android:name="Setup">
             <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.gdc.bp.MsgList" />            
+            android:value="com.gdc.bp.MsgList" />    
         </activity>
-        <activity android:name="SoundActivity"></activity>
-        <activity android:name="Setup"></activity>
-        <activity android:name="db"></activity>
-        <activity android:name="refresh"></activity>
-        <activity android:name="Notify">
-            
-        </activity>
+        <activity android:name="DisplayActivity"></activity>
+        <activity android:name="LogoActivity"></activity>
 
         <service
             android:name=".BPAS"

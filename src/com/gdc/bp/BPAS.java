@@ -4,15 +4,14 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.IBinder;
 import android.os.Message;
 import android.support.v4.app.NotificationCompat;
@@ -114,14 +113,29 @@ public class BPAS extends Service {
 					Log.d("SOCKET", jsonArray.toString());
 					Type listType = new TypeToken<ArrayList<Message>>() {
 					}.getType();
-					Gson gson = new Gson();
 					//ArrayList<Message> messages = gson.fromJson(jsonArray.toString(), listType);
 					//mMessages.addAll(messages);
 					//scrollMyListViewToBottom();
-					showNotify("BP",jsonArray.toString());
-					//updateDB("Jerry",jsonArray.toString());
-					//DoDatabase();
-					InsertDB("bp",jsonArray.toString(),"jerry","2014/07/27");
+					JSONObject obj = null;
+					try {
+						obj = (JSONObject) jsonArray.getJSONObject(0);
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					try {
+						showNotify(obj.getString("sender"),obj.getString("message"));
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					try {
+						InsertDB("bp",obj.getString("message"),obj.getString("sender"),"2014/07/27");
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					System.out.println("InsertDB done");
 					
 				}
@@ -143,5 +157,4 @@ public class BPAS extends Service {
       time);
       db.close();
 	}
-
 }

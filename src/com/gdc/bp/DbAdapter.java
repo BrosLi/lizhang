@@ -102,6 +102,13 @@ null);
 
 public Cursor getTitle(long rowId) throws SQLException
 {
+	System.out.println(DATABASE_TABLE);
+	System.out.println(KEY_ROWID);
+	System.out.println(KEY_TITLE);
+	System.out.println(KEY_CONTENT);
+	System.out.println(KEY_SENDER);
+	System.out.println(KEY_TIME);
+	System.out.println(rowId);
 Cursor mCursor =
 db.query(true, DATABASE_TABLE, new String[] {
 KEY_ROWID,

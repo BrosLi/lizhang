@@ -25,71 +25,62 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_db=0x7f09001d;
-        public static final int action_refresh=0x7f09001c;
-        public static final int action_restart=0x7f09001e;
-        public static final int action_settings=0x7f09001a;
-        public static final int action_stop=0x7f09001b;
-        public static final int btn_bigstyle_show=0x7f090010;
-        public static final int btn_clear=0x7f090014;
-        public static final int btn_clear_all=0x7f090015;
+        public static final int action_delList=0x7f090017;
+        public static final int action_logoff=0x7f090018;
+        public static final int action_restart=0x7f09001a;
+        public static final int action_settings=0x7f090016;
+        public static final int action_stop=0x7f090019;
+        public static final int btn_back=0x7f090010;
         public static final int btn_insert=0x7f090000;
-        public static final int btn_restart=0x7f09000e;
-        public static final int btn_show=0x7f09000f;
-        public static final int btn_show_custom=0x7f090016;
-        public static final int btn_show_cz=0x7f090011;
-        public static final int btn_show_intent_act=0x7f090012;
-        public static final int btn_show_intent_apk=0x7f090013;
-        public static final int btn_show_progress=0x7f090017;
-        public static final int btn_stop=0x7f09000d;
-        public static final int button1=0x7f09000b;
+        public static final int btn_login=0x7f09000d;
+        public static final int btn_restart=0x7f090015;
+        public static final int btn_stop=0x7f090014;
+        public static final int cb_auto=0x7f09000c;
+        public static final int cb_mima=0x7f09000b;
         public static final int details_layout=0x7f090005;
         public static final int display_fragment=0x7f090002;
-        public static final int editText1=0x7f090009;
-        public static final int editText2=0x7f09000a;
-        public static final int imageview=0x7f090006;
+        public static final int et_mima=0x7f09000a;
+        public static final int et_zh=0x7f090008;
+        public static final int img_btn=0x7f090006;
         public static final int left_fragment=0x7f090004;
-        public static final int listview=0x7f090018;
+        public static final int listview=0x7f090012;
         public static final int menu_fragment=0x7f090003;
-        public static final int menu_list=0x7f09000c;
-        public static final int toggleButton1=0x7f090019;
+        public static final int menu_list=0x7f090011;
+        public static final int pgBar=0x7f09000e;
+        public static final int toggleButton1=0x7f090013;
         public static final int tv=0x7f090001;
-        public static final int user_id=0x7f090008;
-        public static final int user_name=0x7f090007;
+        public static final int tv1=0x7f09000f;
+        public static final int tv_mima=0x7f090009;
+        public static final int tv_zh=0x7f090007;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int db=0x7f030001;
-        public static final int display_activity=0x7f030002;
-        public static final int display_fragment=0x7f030003;
-        public static final int list=0x7f030004;
-        public static final int list_entry=0x7f030005;
-        public static final int list_item=0x7f030006;
-        public static final int login=0x7f030007;
-        public static final int menu_fragment=0x7f030008;
-        public static final int notify=0x7f030009;
-        public static final int refresh=0x7f03000a;
-        public static final int setup=0x7f03000b;
+        public static final int db=0x7f030000;
+        public static final int display_activity=0x7f030001;
+        public static final int display_fragment=0x7f030002;
+        public static final int list=0x7f030003;
+        public static final int login=0x7f030004;
+        public static final int logo=0x7f030005;
+        public static final int menu_fragment=0x7f030006;
+        public static final int refresh=0x7f030007;
+        public static final int setup=0x7f030008;
     }
     public static final class menu {
         public static final int main=0x7f080000;
     }
     public static final class string {
-        public static final int action_refresh=0x7f06000e;
-        public static final int action_restart=0x7f06000a;
-        public static final int action_settings=0x7f060002;
-        public static final int action_stop=0x7f06000b;
+        public static final int action_delList=0x7f06000c;
+        public static final int action_logoff=0x7f06000b;
+        public static final int action_restart=0x7f060008;
+        public static final int action_settings=0x7f060001;
+        public static final int action_stop=0x7f060009;
         public static final int app_name=0x7f060000;
-        public static final int autostart=0x7f06000c;
-        public static final int button_login=0x7f060004;
-        public static final int db=0x7f06000d;
-        public static final int hello_world=0x7f060001;
-        public static final int password=0x7f060006;
-        public static final int popup=0x7f060009;
-        public static final int shake=0x7f060008;
-        public static final int sound=0x7f060007;
-        public static final int string_testuser=0x7f060003;
-        public static final int username=0x7f060005;
+        public static final int autostart=0x7f06000a;
+        public static final int button_login=0x7f060002;
+        public static final int password=0x7f060004;
+        public static final int popup=0x7f060007;
+        public static final int shake=0x7f060006;
+        public static final int sound=0x7f060005;
+        public static final int username=0x7f060003;
     }
     public static final class style {
         /** 
