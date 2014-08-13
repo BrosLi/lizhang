@@ -1,3 +1,4 @@
+
 package com.gdc.bp;  
   
 import java.util.ArrayList;
@@ -42,11 +43,11 @@ public class LoginActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {  
         super.onCreate(savedInstanceState);  
           
-        //È¥³ý±êÌâ  
+        //È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);  
         setContentView(R.layout.login);  
           
-        //»ñµÃÊµÀý¶ÔÏó  
+        //ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
         sp = this.getSharedPreferences("userInfo", Context.MODE_WORLD_READABLE);  
         userName = (EditText) findViewById(R.id.login_edit_account);  
         password = (EditText) findViewById(R.id.login_edit_pwd);  
@@ -57,20 +58,20 @@ public class LoginActivity extends Activity {
         httpClient = new DefaultHttpClient();
           
           
-        //ÅÐ¶Ï¼Ç×¡ÃÜÂë¶àÑ¡¿òµÄ×´Ì¬  
+        //ï¿½Ð¶Ï¼ï¿½×¡ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½×´Ì¬  
       if(sp.getBoolean("ISCHECK", true))  
         {  
-          //ÉèÖÃÄ¬ÈÏÊÇ¼ÇÂ¼ÃÜÂë×´Ì¬  
+          //ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ï¿½Ç¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½×´Ì¬  
          rem_pw.setChecked(true);  
          userName.setText(sp.getString("USER_NAME", ""));  
          password.setText(sp.getString("PASSWORD", ""));  
           /*
-          //ÅÐ¶Ï×Ô¶¯µÇÂ½¶àÑ¡¿ò×´Ì¬  
+          //ï¿½Ð¶ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Â½ï¿½ï¿½Ñ¡ï¿½ï¿½×´Ì¬  
           if(sp.getBoolean("AUTO_ISCHECK", false))  
           {  
-                 //ÉèÖÃÄ¬ÈÏÊÇ×Ô¶¯µÇÂ¼×´Ì¬  
+                 //ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Â¼×´Ì¬  
                  auto_login.setChecked(true);  
-                //Ìø×ª½çÃæ  
+                //ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½  
                 Intent intent = new Intent(LoginActivity.this,LogoActivity.class);  
                 LoginActivity.this.startActivity(intent);  
                   
@@ -78,13 +79,13 @@ public class LoginActivity extends Activity {
           */
         }  
           
-        // µÇÂ¼¼àÌýÊÂ¼þ  ÏÖÔÚÄ¬ÈÏÎªÓÃ»§ÃûÎª£ºli ÃÜÂë£º123  
+        // ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½  ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½Îªï¿½Ã»ï¿½ï¿½ï¿½Îªï¿½ï¿½li ï¿½ï¿½ï¿½ë£º123  
         btn_login.setOnClickListener(new OnClickListener() {  
   
             public void onClick(View v) { 
                 if(rem_pw.isChecked())  
                 {  
-                 //¼Ç×¡ÓÃ»§Ãû¡¢ÃÜÂë¡¢  
+                 //ï¿½ï¿½×¡ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¡¢  
                   Editor editor = sp.edit();  
                   editor.putString("USER_NAME", userNameValue);  
                   editor.putString("PASSWORD",passwordValue);  
@@ -94,7 +95,7 @@ public class LoginActivity extends Activity {
                 userNameValue = userName.getText().toString();  
                 passwordValue = password.getText().toString(); 
                 System.out.println("------3-------");
-                //final String JSESSIONID=""; //¶¨ÒåÒ»¸ö¾²Ì¬µÄ×Ö¶Î£¬±£´æsessionID 
+                //final String JSESSIONID=""; //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½Ö¶Î£ï¿½ï¿½ï¿½ï¿½ï¿½sessionID 
                 final String sid=sp.getString("session_sid", "");
                 new Thread(new Runnable(){
             		@Override
@@ -103,12 +104,12 @@ public class LoginActivity extends Activity {
                     	System.out.println("-----Post start-----");
 		                //HttpPost post = new HttpPost("http://bp.stage1.mybluemix.net/demo/login");
 		                HttpPost post = new HttpPost("http://10.0.2.2:3000/demo/login");
-		                //ÅÐ¶Ï×Ô¶¯µÇÂ½¶àÑ¡¿ò×´Ì¬  
+		                //ï¿½Ð¶ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Â½ï¿½ï¿½Ñ¡ï¿½ï¿½×´Ì¬  
 		                if(sp.getBoolean("AUTO_ISCHECK", false))  
 			                {  
-			                       //ÉèÖÃÄ¬ÈÏÊÇ×Ô¶¯µÇÂ¼×´Ì¬  
+			                       //ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Â¼×´Ì¬  
 			                       auto_login.setChecked(true);  
-			                      //Ìø×ª½çÃæ  
+			                      //ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½  
 			                      if(null != sid){  
 			                          post.setHeader("Cookie", "connect.sid="+sid);  
 			                      }  
@@ -117,7 +118,7 @@ public class LoginActivity extends Activity {
                 
                 
 
-		                // Èç¹û´«µÝ²ÎÊý¸öÊý±È½Ï¶àµÄ»°¿ÉÒÔ¶Ô´«µÝµÄ²ÎÊý½øÐÐ·â×°
+		                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È½Ï¶ï¿½Ä»ï¿½ï¿½ï¿½ï¿½Ô¶Ô´ï¿½ï¿½ÝµÄ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð·ï¿½×°
 		                List params = new ArrayList();
 		                params
 		                    .add(new BasicNameValuePair("username", userNameValue));
@@ -126,12 +127,12 @@ public class LoginActivity extends Activity {
 		                try
 		                {
 		                	 
-		                    // ÉèÖÃÇëÇó²ÎÊý
+		                    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		                    post.setEntity(new UrlEncodedFormEntity(
 		                        params, HTTP.UTF_8));
-		                    // ·¢ËÍPOSTÇëÇó
+		                    // ï¿½ï¿½ï¿½ï¿½POSTï¿½ï¿½ï¿½ï¿½
 		                    HttpResponse response = httpClient.execute(post);
-		                    // Èç¹û·þÎñÆ÷³É¹¦µØ·µ»ØÏìÓ¦
+		                    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½Ø·ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
 		                    if (response.getStatusLine()
 		                        .getStatusCode() == 200)
 		                    {
@@ -150,7 +151,7 @@ public class LoginActivity extends Activity {
 		                                sp.edit().putString("connect_sid", cookies.get(i).getValue()).commit(); 
 		                               //regIntent.
 		                                regIntent.putExtra("sessionid", cookies.get(i).getValue());
-		                                //Ìø×ª½çÃæ  
+		                                //ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½  
 		                                Intent intent = new Intent(LoginActivity.this,LogoActivity.class);  
 		                                LoginActivity.this.startActivity(intent);  
 		                                startService(regIntent);
@@ -158,7 +159,7 @@ public class LoginActivity extends Activity {
 		                            }  
 		                        }  
 		
-		                        // ÌáÊ¾µÇÂ¼³É¹¦
+		                        // ï¿½ï¿½Ê¾ï¿½ï¿½Â¼ï¿½É¹ï¿½
 		                        Toast.makeText(LoginActivity.this,
 		                            msg, 5000).show();
 		                    }
@@ -179,41 +180,41 @@ public class LoginActivity extends Activity {
                   
                 if(userNameValue.equals("li")&&passwordValue.equals("123"))  
                 {  
-                    Toast.makeText(LoginActivity.this,"µÇÂ¼³É¹¦", Toast.LENGTH_SHORT).show();  
-                    //µÇÂ¼³É¹¦ºÍ¼Ç×¡ÃÜÂë¿òÎªÑ¡ÖÐ×´Ì¬²Å±£´æÓÃ»§ÐÅÏ¢  
+                    Toast.makeText(LoginActivity.this,"ï¿½ï¿½Â¼ï¿½É¹ï¿½", Toast.LENGTH_SHORT).show();  
+                    //ï¿½ï¿½Â¼ï¿½É¹ï¿½ï¿½Í¼ï¿½×¡ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÑ¡ï¿½ï¿½×´Ì¬ï¿½Å±ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢  
                     if(rem_pw.isChecked())  
                     {  
-                     //¼Ç×¡ÓÃ»§Ãû¡¢ÃÜÂë¡¢  
+                     //ï¿½ï¿½×¡ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¡¢  
                       Editor editor = sp.edit();  
                       editor.putString("USER_NAME", userNameValue);  
                       editor.putString("PASSWORD",passwordValue);  
                       editor.commit();  
                     }  
-                    //Ìø×ª½çÃæ  
+                    //ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½  
                     Intent intent = new Intent(LoginActivity.this,LogoActivity.class);  
                     LoginActivity.this.startActivity(intent);  
                     //finish();  
                       
                 }else{  
                       
-                    Toast.makeText(LoginActivity.this,"ÓÃ»§Ãû»òÃÜÂë´íÎó£¬ÇëÖØÐÂµÇÂ¼", Toast.LENGTH_LONG).show();  
+                    Toast.makeText(LoginActivity.this,"ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼", Toast.LENGTH_LONG).show();  
                 } 
                 */
                   
             }  
         });  
   
-        //¼àÌý¼Ç×¡ÃÜÂë¶àÑ¡¿ò°´Å¥ÊÂ¼þ  
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¡ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Å¥ï¿½Â¼ï¿½  
         rem_pw.setOnCheckedChangeListener(new OnCheckedChangeListener() {  
             public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {  
                 if (rem_pw.isChecked()) {  
                       
-                    System.out.println("¼Ç×¡ÃÜÂëÒÑÑ¡ÖÐ");  
+                    System.out.println("ï¿½ï¿½×¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½");  
                     sp.edit().putBoolean("ISCHECK", true).commit();  
                       
                 }else {  
                       
-                    System.out.println("¼Ç×¡ÃÜÂëÃ»ÓÐÑ¡ÖÐ");  
+                    System.out.println("ï¿½ï¿½×¡ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ñ¡ï¿½ï¿½");  
                     sp.edit().putBoolean("ISCHECK", false).commit();  
                       
                 }  
@@ -221,15 +222,15 @@ public class LoginActivity extends Activity {
             }  
         });  
           /*
-        //¼àÌý×Ô¶¯µÇÂ¼¶àÑ¡¿òÊÂ¼þ  
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Â¼ï¿½  
         auto_login.setOnCheckedChangeListener(new OnCheckedChangeListener() {  
             public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {  
                 if (auto_login.isChecked()) {  
-                    System.out.println("×Ô¶¯µÇÂ¼ÒÑÑ¡ÖÐ");  
+                    System.out.println("ï¿½Ô¶ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ñ¡ï¿½ï¿½");  
                     sp.edit().putBoolean("AUTO_ISCHECK", true).commit();  
   
                 } else {  
-                    System.out.println("×Ô¶¯µÇÂ¼Ã»ÓÐÑ¡ÖÐ");  
+                    System.out.println("ï¿½Ô¶ï¿½ï¿½ï¿½Â¼Ã»ï¿½ï¿½Ñ¡ï¿½ï¿½");  
                     sp.edit().putBoolean("AUTO_ISCHECK", false).commit();  
                 }  
             }  
@@ -238,3 +239,4 @@ public class LoginActivity extends Activity {
   
     }  
 }
+

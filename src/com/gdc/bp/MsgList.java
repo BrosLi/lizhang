@@ -54,6 +54,11 @@ public class MsgList extends Activity {
     	  intent.setClass(this, Setup.class);
     	  startActivity(intent);
     }
+    private void testHTTP(){
+    	Intent intent = new Intent();
+    	  intent.setClass(this, HttpClientLogin.class);
+    	  startActivity(intent);
+    }    
     
 	/** start service**/
 	private void startBPService(){

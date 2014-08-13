@@ -63,14 +63,20 @@ public class MenuFragment extends Fragment implements OnItemClickListener {
 
         db.open();
         Cursor c = db.getAllTitles();
-        if (c.moveToLast())
+        if (c.moveToFirst())
         {
         do {
-        	list.add(c.getString(3));   
-        } while (c.moveToPrevious());
+        	 //menuItems[i] = c.getString(2);
+        	list.add(c.getString(3)); //list.add("ruby")   
+        	//Contents.add(c.getString(1));
+        	 //i=i+1;
+       // DisplayTitle(c);
+        } while (c.moveToNext());
         }
         int size=list.size();
         String[] newStr =  list.toArray(new String[size]); //返回一个包含所有对象的指定类型的数组   
+        //String[] newContent =  Contents.toArray(new String[size]); //返回一个包含所有对象的指定类型的数组          
+        //menuItems[2]="test";
         db.close();
         adapter = new ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, newStr);  
     }  
