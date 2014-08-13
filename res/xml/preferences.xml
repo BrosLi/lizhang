@@ -1,19 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckBoxPreference
-        android:key="pref_sound"
-        android:title="@string/sound"
-        android:summary="Enable Sound notification"
-        android:defaultValue="true" />
-    <CheckBoxPreference
-       	android:key="pref_shake"
-        android:title="@string/shake"
-        android:summary="Enable Shake notification"
-        android:defaultValue="true" />
-    <CheckBoxPreference
-       	android:key="pref_autostart"
-        android:title="@string/autostart"
-        android:summary="Auto start with boot"
-        android:defaultValue="true" />
+<?xml version="1.0" encoding="UTF-8"?> 
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"> 
+    <PreferenceCategory android:title="Setup"> 
+        <CheckBoxPreference 
+            android:key="soundNotification" 
+            android:title="Sound" 
+            android:summary="Sound Notification" 
+            /> 
+        <CheckBoxPreference 
+            android:key="shakeNotification" 
+            android:title="Shake" 
+            android:summary="Shake Notification" 
+            /> 
+    </PreferenceCategory> 
 
-</PreferenceScreen>
+</PreferenceScreen> 

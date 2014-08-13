@@ -52,7 +52,8 @@ public class MenuFragment extends Fragment implements OnItemClickListener {
 
 
         //int i=2;
-        List<String> list = new ArrayList<String>();  
+        List<String> list = new ArrayList<String>(); 
+        List<String> Contents = new ArrayList<String>();  
         /*
         for (int i=0; i<menuItems.length; i++) {  
             list.add(menuItems[i]);  
@@ -62,18 +63,15 @@ public class MenuFragment extends Fragment implements OnItemClickListener {
 
         db.open();
         Cursor c = db.getAllTitles();
-        if (c.moveToFirst())
+        if (c.moveToLast())
         {
         do {
-        	 //menuItems[i] = c.getString(2);
-        	list.add(c.getString(2)); //list.add("ruby")   
-        	 //i=i+1;
-       // DisplayTitle(c);
-        } while (c.moveToNext());
+        	list.add(c.getString(3));   
+        } while (c.moveToPrevious());
         }
         int size=list.size();
         String[] newStr =  list.toArray(new String[size]); //返回一个包含所有对象的指定类型的数组   
-        //menuItems[2]="test";
+        db.close();
         adapter = new ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, newStr);  
     }  
   
@@ -108,7 +106,14 @@ public class MenuFragment extends Fragment implements OnItemClickListener {
      * 如果不是双页模式，则会打开新的Activity。 
      */  
     @Override  
-    public void onItemClick(AdapterView<?> arg0, View view, int index, long arg3) {  
+    public void onItemClick(AdapterView<?> arg0, View view, int index, long arg3) {
+    	DbAdapter db = new DbAdapter(this.getActivity());
+    	db.open();
+    	System.out.println("index = "+index+1);
+    	Cursor c = db.getTitle((long)index+1);
+    	String content = c.getString(2); 
+    	String time = c.getString(4);
+    	db.close();
         if (isTwoPane) {  
             Fragment fragment = null;  
            // if (index == 0) {  
@@ -116,8 +121,9 @@ public class MenuFragment extends Fragment implements OnItemClickListener {
            // } else if (index == 1) {  
                 fragment = new DisplayFragment();  
             //} 
+               
                 Bundle bundle = new Bundle();
-                bundle.putString("content", "testtest");
+                bundle.putString("content", content);
                 fragment.setArguments(bundle);
             getFragmentManager().beginTransaction().replace(R.id.details_layout, fragment).commit();  
         } else {  
@@ -126,7 +132,7 @@ public class MenuFragment extends Fragment implements OnItemClickListener {
            //     intent = new Intent(getActivity(), SoundActivity.class);  
           //  } else if (index == 1) {  
             intent = new Intent(getActivity(), DisplayActivity.class);  
-            intent.putExtra(EXTRA_MESSAGE, "aaaa");
+            intent.putExtra(EXTRA_MESSAGE,content);
           //  }  
             startActivity(intent);  
         }  

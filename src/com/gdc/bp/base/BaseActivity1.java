@@ -7,7 +7,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 
-public class BaseActivity extends Activity {
+public class BaseActivity1 extends Activity {
 	/** Notificationπ‹¿Ì */
 	public NotificationManager mNotificationManager;
 

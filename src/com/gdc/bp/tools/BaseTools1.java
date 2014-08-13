@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
-public class BaseTools {
+public class BaseTools1 {
 	/**
 	 * 获取当前应用版本号
 	 * @param context
